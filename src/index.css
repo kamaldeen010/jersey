@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d0d0e;
+  --foreground: #f4f4f5;
+  --accent: #e11d48;
+  --accent-hover: #be123c;
+  --accent-foreground: #ffffff;
+  --card: #17171c;
+  --card-border: #26262b;
+}
+
+[data-theme='light'] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #e11d48;
+  --accent-hover: #be123c;
+  --accent-foreground: #ffffff;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+}
+
+*, *::before, *::after {
+  transition-property: background-color, border-color, text-decoration-color, fill, stroke, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.orange-glow-bg {
+  background: radial-gradient(circle at 50% -20%, rgba(225, 29, 72, 0.15) 0%, rgba(13, 13, 14, 0) 60%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
