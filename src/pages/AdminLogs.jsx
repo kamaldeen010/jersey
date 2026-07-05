@@ -4,13 +4,8 @@ export default function AdminLogs({ products, onAddProduct, onDeleteProduct }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('Club Kits');
-  
-  // Storing the actual file object for backend uploading
   const [imageFile, setImageFile] = useState(null);
-  // Storing a temporary data string strictly for UI previewing
   const [previewUrl, setPreviewUrl] = useState('');
-  
-  // New configuration state tracks
   const [isLongSleeve, setIsLongSleeve] = useState(false);
   const [discount, setDiscount] = useState('0');
   const [era, setEra] = useState('Modern');
@@ -19,8 +14,8 @@ export default function AdminLogs({ products, onAddProduct, onDeleteProduct }) {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImageFile(file); // Keep the raw file reference for our payload submission
-      setPreviewUrl(URL.createObjectURL(file)); // Safe temporary string for local layout rendering
+      setImageFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
     }
   };
 
@@ -31,22 +26,18 @@ export default function AdminLogs({ products, onAddProduct, onDeleteProduct }) {
       return;
     }
 
-    // Use FormData to allow binary file transfers to match the backend multer middleware setup
     const formData = new FormData();
     formData.append('name', name);
     formData.append('price', price);
     formData.append('category', category);
-    formData.append('imageFile', imageFile); // Triggers the backend upload process
+    formData.append('imageFile', imageFile);
     formData.append('isLongSleeve', isLongSleeve);
     formData.append('discount', discount);
     formData.append('era', era);
     formData.append('notablePlayers', notablePlayers.trim() || 'Club Legends');
 
     try {
-      // Await the parent execution to confirm database entry succeeded
       await onAddProduct(formData);
-      
-      // 🎉 SUCCESS: Clear state pipelines completely ONLY if no error is thrown
       setName('');
       setPrice('');
       setCategory('Club Kits');
@@ -60,7 +51,6 @@ export default function AdminLogs({ products, onAddProduct, onDeleteProduct }) {
       
       alert("Jersey successfully added to vault!");
     } catch (error) {
-      // ❌ FAILURE: If the backend fails or internet drops, catch runs and keeps the form values completely intact
       console.error("Form synchronization failed, keeping inputs populated:", error);
       alert("Network glitch caught! The form didn't clear—just click 'Authorize Vault Entry' again.");
     }
