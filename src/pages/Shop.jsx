@@ -9,15 +9,15 @@ export default function Shop({ products = [], onAddToCart, isHomePage = false })
   const tabs = ['ALL', 'Club Kits', 'National Teams', 'Retro Classics', 'Kids Kits'];
   const safeProducts = Array.isArray(products) ? products : [];
 
-  // Automatically detects if it's running on the Home page route (/)
   const isHome = isHomePage || window.location.pathname === '/';
 
-  // Bypasses all filters completely if on the homepage so products show instantly
   const filteredProducts = safeProducts.filter(p => {
     if (!p) return false;
     if (isHome) return true; 
 
-    const matchesTab = activeTab === 'ALL' || p.category === activeTab;
+    const matchesTab = activeTab === 'ALL' || 
+      p.category === activeTab || 
+      (activeTab === 'Retro Classics' && (p.category === 'Retro' || p.category === 'Retro Kits' || p.era === 'Retro'));
     
     let matchesSleeve = true;
     if (sleeveFilter === 'LONG') {
@@ -31,7 +31,6 @@ export default function Shop({ products = [], onAddToCart, isHomePage = false })
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 orange-glow-bg">
-      {/* Filter headers automatically hide when on the homepage */}
       {!isHome && (
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--card-border)] pb-4 mb-8">
           <div className="flex gap-4 overflow-x-auto text-[10px] font-black uppercase tracking-widest no-scrollbar">

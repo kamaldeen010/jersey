@@ -130,76 +130,57 @@ function AppContent() {
       <Navbar cartCount={totalCartItems} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       
       <main className="flex-grow w-full pt-16">
-        {loading ? (
-          <div className="flex flex-col items-center justify-center min-h-[55vh] gap-3">
-            <svg 
-              className="w-10 h-10 animate-pulse text-[var(--accent)]" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M7 3 L10 5 L14 5 L17 3 L21 7 L18 10 L18 21 L6 21 L6 10 L3 7 Z" />
-            </svg>
-            <p className="text-[9px] font-black tracking-[0.25em] text-neutral-500 uppercase">
-              LOADING KITS...
-            </p>
-          </div>
-        ) : (
-          <Routes>
-            <Route 
-              path="/" 
-              element={<Home products={filteredProducts} onAddToCart={handleAddToCart} />} 
-            />
-            <Route 
-              path="/shop" 
-              element={<Shop products={filteredProducts} onAddToCart={handleAddToCart} />} 
-            />
-            <Route 
-              path="/product/:id" 
-              element={<ProductDetails products={products} onAddToCart={handleAddToCart} />} 
-            />
-            <Route 
-              path="/about" 
-              element={<AboutUs />} 
-            />
-            <Route 
-              path="/contact" 
-              element={<Contact />} 
-            />
-            <Route 
-              path="/terms" 
-              element={<TermsOfService />} 
-            />
-            <Route 
-              path="/privacy" 
-              element={<PrivacyPolicy />} 
-            />
-            <Route 
-              path="/admin-logs" 
-              element={
-                <AdminLogs 
-                  products={products} 
-                  onAddProduct={handleAddProduct} 
-                  onDeleteProduct={handleDeleteProduct} 
-                />
-              } 
-            />
-            <Route 
-              path="/checkout" 
-              element={
-                <Checkout 
-                  cart={cart} 
-                  onUpdateQuantity={handleUpdateQuantity} 
-                  onRemoveItem={handleRemoveItem}
-                  onClearCart={handleClearCart} 
-                />
-              } 
-            />
-          </Routes>
-        )}
+        <Routes>
+          <Route 
+            path="/" 
+            element={<Home products={filteredProducts} onAddToCart={handleAddToCart} productsLoading={loading} />} 
+          />
+          <Route 
+            path="/shop" 
+            element={<Shop products={filteredProducts} onAddToCart={handleAddToCart} productsLoading={loading} />} 
+          />
+          <Route 
+            path="/product/:id" 
+            element={<ProductDetails products={products} onAddToCart={handleAddToCart} />} 
+          />
+          <Route 
+            path="/about" 
+            element={<AboutUs />} 
+          />
+          <Route 
+            path="/contact" 
+            element={<Contact />} 
+          />
+          <Route 
+            path="/terms" 
+            element={<TermsOfService />} 
+          />
+          <Route 
+            path="/privacy" 
+            element={<PrivacyPolicy />} 
+          />
+          <Route 
+            path="/admin-logs" 
+            element={
+              <AdminLogs 
+                products={products} 
+                onAddProduct={handleAddProduct} 
+                onDeleteProduct={handleDeleteProduct} 
+              />
+            } 
+          />
+          <Route 
+            path="/checkout" 
+            element={
+              <Checkout 
+                cart={cart} 
+                onUpdateQuantity={handleUpdateQuantity} 
+                onRemoveItem={handleRemoveItem}
+                onClearCart={handleClearCart} 
+              />
+            } 
+          />
+        </Routes>
       </main>
 
       <Footer />

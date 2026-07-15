@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home({ products, onAddToCart }) {
+export default function Home({ products, onAddToCart, productsLoading }) {
   const navigate = useNavigate();
   
   const loopImages = [
@@ -126,7 +126,25 @@ export default function Home({ products, onAddToCart }) {
           </button>
         </div>
 
-        {visibleProducts.length > 0 ? (
+        {productsLoading ? (
+          /* Inline loaders occupy ONLY the product section zone now */
+          <div className="flex flex-col items-center justify-center min-h-[35vh] gap-3">
+            <svg 
+              className="w-10 h-10 animate-pulse text-[var(--accent)]" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M7 3 L10 5 L14 5 L17 3 L21 7 L18 10 L18 21 L6 21 L6 10 L3 7 Z" />
+            </svg>
+            <p className="text-[9px] font-black tracking-[0.25em] text-neutral-500 uppercase">
+              LOADING KITS...
+            </p>
+          </div>
+        ) : visibleProducts.length > 0 ? (
           <div className="space-y-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {visibleProducts.map((product) => {
