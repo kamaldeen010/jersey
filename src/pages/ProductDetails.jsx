@@ -91,7 +91,7 @@ export default function ProductDetail({ products = [], onAddToCart }) {
                 className="w-4 h-4 accent-[var(--accent)] bg-neutral-900 border-[var(--card-border)] rounded-xs"
               />
               <div className="flex flex-col">
-                <span className="text-xs font-black uppercase tracking-wider text-[var(--foreground)]">Add Custom Print</span>
+                <span className="text-xs font-black text-white uppercase tracking-wider text-[var(--foreground)]">Add Custom Print</span>
                 <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-500">+ ₦4,000 Customization Fee</span>
               </div>
             </label>

@@ -12,7 +12,7 @@ export default function AboutUs() {
 
       <div className="space-y-6 text-sm text-neutral-500 leading-relaxed text-center max-w-2xl mx-auto">
         <p>
-          DELUXEJERSEY emerged out of a pure obsession with football culture and pitch-ready style. We source premium replicas, player editions, and historically accurate retro classics for collectors and enthusiasts who demand crisp detailing and exceptional textile craftsmanship.
+          SANTAJERSEY emerged out of a pure obsession with football culture and pitch-ready style. We source premium replicas, player editions, and historically accurate retro classics for collectors and enthusiasts who demand crisp detailing and exceptional textile craftsmanship.
         </p>
         <p>
           Operating with specialized logistics across key hubs, we prioritize speed, flawless stitching, and high-performance wear. Every kit in our vault undergoes thorough quality inspections before packaging, ensuring matchday standards are met the second you unbox your kit.

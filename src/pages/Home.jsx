@@ -31,10 +31,10 @@ export default function Home({ products, onAddToCart, productsLoading }) {
         className="w-full bg-neutral-950 border-b border-[var(--card-border)] py-24 px-4 md:px-8 relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `linear-gradient(to bottom, rgba(10, 10, 12, 0.5), rgba(10, 5, 2, 0.75)), url('/hero2.jpeg')` }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,87,38,0.06)_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,87,38,0.06)_0%,transparent_100%)]" />
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
           <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[var(--accent)] mb-4 px-2 py-1 bg-black border border-orange-500/20 rounded-sm">
-            DELUXE STORES
+            SANTA STORES
           </span>
           <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-[var(--foreground)] max-w-3xl leading-none mb-6">
             <span className='text-white'>PREMIUM KITS</span> <br />

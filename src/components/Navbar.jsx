@@ -66,7 +66,7 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
         </button>
 
         <Link to="/" className="text-sm font-black uppercase tracking-widest text-[var(--foreground)] shrink-0">
-          DELUXEJERSEY
+          SANTAJERSEY
         </Link>
         
         {!showSearchInput && (
@@ -167,7 +167,7 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value.replace(/\D/g, ''))}
                 placeholder="••••••"
-                className="w-full text-center bg-neutral-900 border border-[var(--card-border)] text-sm tracking-widest font-black p-3 rounded-sm outline-none text-[var(--foreground)] focus:border-[var(--accent)]"
+                className="w-full text-center bg-white border border-[var(--card-border)] text-sm tracking-widest font-black p-3 rounded-sm outline-none text-[var(--foreground)] focus:border-[var(--accent)]"
                 autoFocus
               />
               {error && <p className="text-[9px] text-red-500 font-bold tracking-wide text-center uppercase">Invalid Security Credentials</p>}

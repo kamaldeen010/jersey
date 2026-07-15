@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-neutral-900">
           
           <div className="md:col-span-1">
-            <h4 className="text-[11px] font-black tracking-widest uppercase text-[var(--foreground)] mb-2">
-              CRZJERSEYS
+            <h4 className="text-[11px] text-white font-black tracking-widest uppercase text-[var(--foreground)] mb-2">
+              SANTAJERSEYS
             </h4>
             <p className="text-[9px] font-medium tracking-wider text-neutral-500 uppercase leading-relaxed max-w-[200px]">
               Premium authentic kit hub. Engineered for optimal performance and unmatched style.
