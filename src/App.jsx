@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import ProductDetails from './pages/ProductDetails';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQ from './pages/FAQ';
 
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:5000' 
@@ -150,6 +151,10 @@ function AppContent() {
           <Route 
             path="/contact" 
             element={<Contact />} 
+          />
+          <Route 
+            path="/faq" 
+            element={<FAQ />} 
           />
           <Route 
             path="/terms" 

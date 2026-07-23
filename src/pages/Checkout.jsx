@@ -21,7 +21,7 @@ export default function Checkout({ cart = [], onUpdateQuantity, onRemoveItem }) 
       return;
     }
 
-    const whatsappNumber = "2348136325564"; 
+    const whatsappNumber = "2349071395377"; 
 
     let message = `🚀 *NEW ORDER*\n`;
     message += `=============================\n\n`;

@@ -7,6 +7,9 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
   const dropdownRef = useRef(null);
   const gateRef = useRef(null);
   const hamburgerRef = useRef(null);
+  const searchBtnRef = useRef(null);
+  const desktopSearchRef = useRef(null);
+  const mobileSearchRef = useRef(null);
   
   const [showGate, setShowGate] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -47,13 +50,23 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
         setError(false);
         setPasscode('');
       }
+
+      const isClickInsideSearch = 
+        (searchBtnRef.current && searchBtnRef.current.contains(event.target)) ||
+        (desktopSearchRef.current && desktopSearchRef.current.contains(event.target)) ||
+        (mobileSearchRef.current && mobileSearchRef.current.contains(event.target));
+
+      if (!isClickInsideSearch) {
+        setShowSearchInput(false);
+      }
     }
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
-    <nav className="w-full h-16 border-b border-[var(--card-border)]  bg-[var(--background)] px-4 md:px-8 flex items-center justify-between fixed top-0 z-20000 transition-colors duration-300 ease-in-out">
+    <nav className="w-full h-16 border-b border-[var(--card-border)] bg-[var(--background)] px-4 md:px-8 flex items-center justify-between fixed top-0 z-20000 transition-colors duration-300 ease-in-out">
       <div className="flex items-center gap-8 flex-1">
         <button 
           ref={hamburgerRef}
@@ -75,11 +88,12 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
             <Link to="/shop" className="hover:text-[var(--foreground)]">Shop</Link>
             <Link to="/about" className="hover:text-[var(--foreground)]">About</Link>
             <Link to="/contact" className="hover:text-[var(--foreground)]">Contact</Link>
+            <Link to="/faq" className="hover:text-[var(--foreground)]">FAQ</Link>
           </div>
         )}
 
         {showSearchInput && (
-          <div className="hidden md:flex items-center flex-1 max-w-md animate-fadeIn">
+          <div ref={desktopSearchRef} className="hidden md:flex items-center flex-1 max-w-md animate-fadeIn">
             <input 
               type="text"
               value={searchQuery}
@@ -95,18 +109,21 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
       <div className="flex items-center gap-4 text-[var(--foreground)] shrink-0">
         <div className="md:hidden flex items-center">
           {showSearchInput && (
-            <input 
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="SEARCH KITS..."
-              className="w-28 sm:w-40 bg-neutral-900/60 border border-[var(--card-border)] text-[9px] tracking-widest font-black px-2 py-1.5 rounded-sm outline-none text-[var(--foreground)] focus:border-[var(--accent)] mr-1"
-              autoFocus
-            />
+            <div ref={mobileSearchRef}>
+              <input 
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="SEARCH KITS..."
+                className="w-28 sm:w-40 bg-neutral-900/60 border border-[var(--card-border)] text-[9px] tracking-widest font-black px-2 py-1.5 rounded-sm outline-none text-[var(--foreground)] focus:border-[var(--accent)] mr-1"
+                autoFocus
+              />
+            </div>
           )}
         </div>
 
         <button 
+          ref={searchBtnRef}
           onClick={() => setShowSearchInput(!showSearchInput)}
           className={`p-2 transition-all duration-200 cursor-pointer ${showSearchInput ? 'text-[var(--accent)]' : 'hover:text-[var(--accent)]'}`}
         >
@@ -152,6 +169,7 @@ export default function Navbar({ cartCount, searchQuery, setSearchQuery }) {
             <Link to="/shop" onClick={() => setShowMobileMenu(false)} className="p-3 border border-[var(--card-border)] bg-[var(--background)] rounded-sm text-[var(--foreground)] hover:border-[var(--accent)]">Shop</Link>
             <Link to="/about" onClick={() => setShowMobileMenu(false)} className="p-3 border border-[var(--card-border)] bg-[var(--background)] rounded-sm text-[var(--foreground)] hover:border-[var(--accent)]">About</Link>
             <Link to="/contact" onClick={() => setShowMobileMenu(false)} className="p-3 border border-[var(--card-border)] bg-[var(--background)] rounded-sm text-[var(--foreground)] hover:border-[var(--accent)]">Contact</Link>
+            <Link to="/faq" onClick={() => setShowMobileMenu(false)} className="p-3 border border-[var(--card-border)] bg-[var(--background)] rounded-sm text-[var(--foreground)] hover:border-[var(--accent)] col-span-2">FAQ</Link>
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ export default function Contact() {
   const [message, setMessage] = useState('');
 
 
-  const WHATSAPP_NUMBER = "2348136325564"; 
+  const WHATSAPP_NUMBER = "2349071395377"; 
 
   const handleSendMessage = (e) => {
     e.preventDefault();
